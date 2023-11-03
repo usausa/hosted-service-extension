@@ -13,4 +13,8 @@
     <PackageTags>hostedservice cron scheduler</PackageTags>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Cronos" Version="0.7.1" />
+  </ItemGroup>
+
 </Project>

@@ -13,4 +13,8 @@
     <PackageTags>hostedservice kestrel tcp</PackageTags>
   </PropertyGroup>
 
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
 </Project>
