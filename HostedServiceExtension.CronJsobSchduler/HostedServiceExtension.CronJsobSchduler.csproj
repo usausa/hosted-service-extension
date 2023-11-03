@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <CodeAnalysisRuleSet>..\Analyzers.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>HostedServiceExtension.CronJsobSchduler</PackageId>
+    <Title>HostedServiceExtension.CronJsobSchduler</Title>
+    <Description>Cronos job scheduler service.</Description>
+    <Summary>Cronos job scheduler service.</Summary>
+    <PackageTags>hostedservice cron scheduler</PackageTags>
+  </PropertyGroup>
+
+</Project>
