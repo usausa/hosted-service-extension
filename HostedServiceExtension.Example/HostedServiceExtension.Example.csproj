@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HostedServiceExtension.CronJsobSchduler\HostedServiceExtension.CronJsobSchduler.csproj" />
+    <ProjectReference Include="..\HostedServiceExtension.CronosJobScheduler\HostedServiceExtension.CronosJobScheduler.csproj" />
     <ProjectReference Include="..\HostedServiceExtension.KestrelTcpServer\HostedServiceExtension.KestrelTcpServer.csproj" />
   </ItemGroup>
 </Project>

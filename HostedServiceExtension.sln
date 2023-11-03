@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostedServiceExtension.Kest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostedServiceExtension.Example", "HostedServiceExtension.Example\HostedServiceExtension.Example.csproj", "{289BFEAD-5CD5-4BEB-A9ED-A77BC72B1B1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostedServiceExtension.CronJsobSchduler", "HostedServiceExtension.CronJsobSchduler\HostedServiceExtension.CronJsobSchduler.csproj", "{B81823D5-D9F7-4EF7-AF3D-3525281DD2F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostedServiceExtension.CronosJobScheduler", "HostedServiceExtension.CronosJobScheduler\HostedServiceExtension.CronosJobScheduler.csproj", "{D2D42A95-A2C5-4049-B306-0B6BA829EFF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,10 +40,10 @@ Global
 		{289BFEAD-5CD5-4BEB-A9ED-A77BC72B1B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{289BFEAD-5CD5-4BEB-A9ED-A77BC72B1B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{289BFEAD-5CD5-4BEB-A9ED-A77BC72B1B1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B81823D5-D9F7-4EF7-AF3D-3525281DD2F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B81823D5-D9F7-4EF7-AF3D-3525281DD2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B81823D5-D9F7-4EF7-AF3D-3525281DD2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B81823D5-D9F7-4EF7-AF3D-3525281DD2F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2D42A95-A2C5-4049-B306-0B6BA829EFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D42A95-A2C5-4049-B306-0B6BA829EFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D42A95-A2C5-4049-B306-0B6BA829EFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D42A95-A2C5-4049-B306-0B6BA829EFF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,7 +51,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4CD115E0-C43A-46B1-BB97-D1B9B738E99B} = {5DC4CD31-B863-41E5-95E1-EDF4115CB45A}
 		{289BFEAD-5CD5-4BEB-A9ED-A77BC72B1B1D} = {3101FF20-4036-4F48-84D1-17335535F60A}
-		{B81823D5-D9F7-4EF7-AF3D-3525281DD2F1} = {5DC4CD31-B863-41E5-95E1-EDF4115CB45A}
+		{D2D42A95-A2C5-4049-B306-0B6BA829EFF5} = {5DC4CD31-B863-41E5-95E1-EDF4115CB45A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BF61861C-7C44-4116-A3A3-31F2F5AAD4EF}
