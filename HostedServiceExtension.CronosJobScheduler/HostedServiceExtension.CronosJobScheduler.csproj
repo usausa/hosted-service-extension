@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>HostedServiceExtension.CronJobSchduler</PackageId>
-    <Title>HostedServiceExtension.CronJobSchduler</Title>
+    <PackageId>HostedServiceExtension.CronosJobScheduler</PackageId>
+    <Title>HostedServiceExtension.CronosJobScheduler</Title>
     <Description>Cronos job scheduler service.</Description>
     <Summary>Cronos job scheduler service.</Summary>
     <PackageTags>hostedservice cron scheduler</PackageTags>
