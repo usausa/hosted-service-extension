@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets;
 
-public sealed class KestrelTcpServiceOptions
+public sealed class TcpServerOptions
 {
     private readonly KestrelServerOptions serverOptions;
 
@@ -14,7 +14,7 @@ public sealed class KestrelTcpServiceOptions
 
     public bool GracefulShutdown { get; set; }
 
-    public KestrelTcpServiceOptions(KestrelServerOptions serverOptions, SocketTransportOptions transportOptions)
+    internal TcpServerOptions(KestrelServerOptions serverOptions, SocketTransportOptions transportOptions)
     {
         this.serverOptions = serverOptions;
         TransportOptions = transportOptions;

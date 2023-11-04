@@ -12,9 +12,10 @@ public sealed class SampleJob : ISchedulerJob
         this.log = log;
     }
 
-    public ValueTask ExecuteAsync(DateTime time)
+    public ValueTask ExecuteAsync(DateTimeOffset time, CancellationToken cancellationToken)
     {
         log.LogInformation("Run at {Time:HH:mm:ss}.", time);
+
         return ValueTask.CompletedTask;
     }
 }

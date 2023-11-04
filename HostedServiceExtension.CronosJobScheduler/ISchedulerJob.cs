@@ -2,5 +2,5 @@ namespace HostedServiceExtension.CronosJobScheduler;
 
 public interface ISchedulerJob
 {
-    ValueTask ExecuteAsync(DateTime time);
+    ValueTask ExecuteAsync(DateTimeOffset time, CancellationToken cancellationToken);
 }

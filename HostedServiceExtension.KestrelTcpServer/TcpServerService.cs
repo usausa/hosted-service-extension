@@ -9,13 +9,13 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 #pragma warning disable CA1812
-internal sealed class KestrelTcpService : IHostedService, IDisposable
+internal sealed class TcpServerService : IHostedService, IDisposable
 {
     private readonly KestrelServer kestrelServer;
 
     private readonly bool gracefulShutdown;
 
-    public KestrelTcpService(IServiceProvider serviceProvider, KestrelTcpServiceConfig config)
+    public TcpServerService(IServiceProvider serviceProvider, Action<TcpServerOptions> config)
     {
         var serverOptions = new KestrelServerOptions
         {
@@ -23,8 +23,8 @@ internal sealed class KestrelTcpService : IHostedService, IDisposable
         };
         var transportOptions = new SocketTransportOptions();
 
-        var options = new KestrelTcpServiceOptions(serverOptions, transportOptions);
-        config.Configure(options);
+        var options = new TcpServerOptions(serverOptions, transportOptions);
+        config(options);
 
         var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
         var transportFactory = new SocketTransportFactory(new OptionsWrapper<SocketTransportOptions>(transportOptions), loggerFactory);
