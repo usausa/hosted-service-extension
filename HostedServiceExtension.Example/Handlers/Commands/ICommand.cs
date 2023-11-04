@@ -4,7 +4,7 @@ using System.Buffers;
 
 public interface ICommand
 {
-    bool Match(ReadOnlySpan<byte> command);
+    bool Match(ReadOnlySequence<byte> command);
 
-    ValueTask<bool> ExecuteAsync(ReadOnlyMemory<byte> options, IBufferWriter<byte> writer);
+    ValueTask<bool> ExecuteAsync(ReadOnlySequence<byte> options, IBufferWriter<byte> writer);
 }

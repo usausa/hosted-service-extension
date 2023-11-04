@@ -13,16 +13,16 @@ public sealed class SetCommand : ICommand
         this.featureService = featureService;
     }
 
-    public bool Match(ReadOnlySpan<byte> command) => command.SequenceEqual("set"u8);
+    public bool Match(ReadOnlySequence<byte> command) => command.SequentialEqual("set"u8);
 
-    public ValueTask<bool> ExecuteAsync(ReadOnlyMemory<byte> options, IBufferWriter<byte> writer)
+    public ValueTask<bool> ExecuteAsync(ReadOnlySequence<byte> options, IBufferWriter<byte> writer)
     {
-        if ("1"u8.SequenceEqual(options.Span))
+        if (options.SequentialEqual("1"u8))
         {
             featureService.UpdateFeature(true);
             writer.WriteAndAdvanceOk();
         }
-        else if ("0"u8.SequenceEqual(options.Span))
+        else if (options.SequentialEqual("0"u8))
         {
             featureService.UpdateFeature(false);
             writer.WriteAndAdvanceOk();
