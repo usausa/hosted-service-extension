@@ -64,7 +64,7 @@ public sealed class SampleHandler : ConnectionHandler
                     break;
                 }
 
-                connection.Transport.Input.AdvanceTo(buffer.End);
+                connection.Transport.Input.AdvanceTo(buffer.Start, buffer.End);
 
                 if (!resetTimeout)
                 {
@@ -88,12 +88,14 @@ public sealed class SampleHandler : ConnectionHandler
     private static bool ReadLine(ref ReadOnlySequence<byte> buffer, out ReadOnlySequence<byte> line)
     {
         var reader = new SequenceReader<byte>(buffer);
-        if (reader.TryReadTo(out line, "\r\n"u8))
+        if (reader.TryReadTo(out ReadOnlySequence<byte> l, "\r\n"u8))
         {
             buffer = buffer.Slice(reader.Position);
+            line = l;
             return true;
         }
 
+        line = default;
         return false;
     }
 
