@@ -49,7 +49,7 @@ internal sealed class TcpServerService : IHostedService, IDisposable
         else
         {
             using var cts = new CancellationTokenSource();
-            cts.Cancel();
+            await cts.CancelAsync().ConfigureAwait(false);
             await kestrelServer.StopAsync(cts.Token).ConfigureAwait(false);
         }
     }
