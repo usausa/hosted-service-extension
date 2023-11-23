@@ -18,7 +18,7 @@ internal sealed class JobSchedulerService : BackgroundService
         jobOptions = options.JobOptions;
     }
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var tasks = new Task[jobOptions.Count];
         for (var i = 0; i < tasks.Length; i++)
@@ -26,7 +26,7 @@ internal sealed class JobSchedulerService : BackgroundService
             tasks[i] = RunJobAsync(jobOptions[i], stoppingToken);
         }
 
-        await Task.WhenAll(tasks).ConfigureAwait(false);
+        return Task.WhenAll(tasks);
     }
 
 #pragma warning disable CA1031

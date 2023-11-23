@@ -35,10 +35,8 @@ internal sealed class TcpServerService : IHostedService, IDisposable
 
     public void Dispose() => kestrelServer.Dispose();
 
-    public async Task StartAsync(CancellationToken cancellationToken)
-    {
-        await kestrelServer.StartAsync((IHttpApplication<object>)null!, cancellationToken).ConfigureAwait(false);
-    }
+    public Task StartAsync(CancellationToken cancellationToken) =>
+        kestrelServer.StartAsync((IHttpApplication<object>)null!, cancellationToken);
 
     public async Task StopAsync(CancellationToken cancellationToken)
     {
