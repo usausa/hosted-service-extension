@@ -9,7 +9,6 @@
     <PackageId>HostedServiceExtension.KestrelTcpServer</PackageId>
     <Title>HostedServiceExtension.KestrelTcpServer</Title>
     <Description>Kestrel TCP Server hosted service.</Description>
-    <Summary>Kestrel TCP Server hosted service.</Summary>
     <PackageTags>hostedservice kestrel tcp</PackageTags>
   </PropertyGroup>
 

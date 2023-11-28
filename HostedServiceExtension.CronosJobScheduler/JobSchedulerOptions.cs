@@ -6,7 +6,7 @@ public sealed class JobSchedulerOptions
 {
     private readonly IServiceProvider serviceProvider;
 
-    internal List<JobOptions> JobOptions { get; } = new();
+    internal List<JobOptions> JobOptions { get; } = [];
 
     internal JobSchedulerOptions(IServiceProvider serviceProvider)
     {

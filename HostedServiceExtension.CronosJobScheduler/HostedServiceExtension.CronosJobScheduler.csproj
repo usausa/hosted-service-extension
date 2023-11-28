@@ -9,7 +9,6 @@
     <PackageId>HostedServiceExtension.CronosJobScheduler</PackageId>
     <Title>HostedServiceExtension.CronosJobScheduler</Title>
     <Description>Cronos job scheduler service.</Description>
-    <Summary>Cronos job scheduler service.</Summary>
     <PackageTags>hostedservice cron scheduler</PackageTags>
   </PropertyGroup>
 
