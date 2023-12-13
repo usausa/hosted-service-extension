@@ -54,7 +54,7 @@ internal sealed class JobSchedulerService : BackgroundService
                 // Ignore
             }
 
-            next = expression.GetNextOccurrence(DateTimeOffset.Now, timeZoneInfo);
+            next = expression.GetNextOccurrence(next.Value, timeZoneInfo);
         }
     }
 #pragma warning restore CA1031
