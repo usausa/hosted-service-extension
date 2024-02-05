@@ -7,7 +7,8 @@ using HostedServiceExtension.Example.Handlers.Commands;
 
 using Microsoft.AspNetCore.Connections;
 
-#pragma warning disable CA1848
+using Smart.Threading;
+
 public sealed class SampleHandler : ConnectionHandler
 {
     private enum CommandResult
@@ -17,32 +18,30 @@ public sealed class SampleHandler : ConnectionHandler
         Quit
     }
 
-    private readonly ILogger<SampleHandler> logger;
+    private readonly ILogger<SampleHandler> log;
 
     private readonly ICommand[] commands;
 
-    public SampleHandler(ILogger<SampleHandler> logger, IEnumerable<ICommand> commands)
+    public SampleHandler(ILogger<SampleHandler> log, IEnumerable<ICommand> commands)
     {
-        this.logger = logger;
+        this.log = log;
         this.commands = commands.ToArray();
     }
 
     public override async Task OnConnectedAsync(ConnectionContext connection)
     {
-        logger.LogInformation("Handler connected. connectionId=[{ConnectionId}]", connection.ConnectionId);
+        log.DebugHandlerConnected(connection.ConnectionId);
 
-        var timeout = new CancellationTokenSource();
         try
         {
-            var running = true;
-            while (running)
+            using var timeout = new ReusableCancellationTokenSource();
+            while (true)
             {
                 timeout.CancelAfter(30_000);
                 var result = await connection.Transport.Input.ReadAsync(timeout.Token);
-                var resetTimeout = timeout.TryReset();
-
                 var buffer = result.Buffer;
 
+                var running = true;
                 while (!buffer.IsEmpty && ReadLine(ref buffer, out var line))
                 {
                     var commandResult = await ProcessLineAsync(line, connection.Transport.Output);
@@ -66,11 +65,7 @@ public sealed class SampleHandler : ConnectionHandler
 
                 connection.Transport.Input.AdvanceTo(buffer.Start, buffer.End);
 
-                if (!resetTimeout)
-                {
-                    timeout.Dispose();
-                    timeout = new CancellationTokenSource();
-                }
+                timeout.Reset();
             }
         }
         catch (OperationCanceledException)
@@ -79,10 +74,8 @@ public sealed class SampleHandler : ConnectionHandler
         }
         finally
         {
-            timeout.Dispose();
+            log.DebugHandlerDisconnected(connection.ConnectionId);
         }
-
-        logger.LogInformation("Handler disconnected. connectionId=[{ConnectionId}]", connection.ConnectionId);
     }
 
     private static bool ReadLine(ref ReadOnlySequence<byte> buffer, out ReadOnlySequence<byte> line)
@@ -113,4 +106,3 @@ public sealed class SampleHandler : ConnectionHandler
         return CommandResult.Unknown;
     }
 }
-#pragma warning restore CA1848

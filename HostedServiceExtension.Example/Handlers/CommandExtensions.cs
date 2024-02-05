@@ -2,7 +2,7 @@ namespace HostedServiceExtension.Example.Handlers;
 
 using System.Buffers;
 
-public static class CommandHelper
+public static class CommandExtensions
 {
     public static void WriteAndAdvanceOk(this IBufferWriter<byte> writer)
     {
