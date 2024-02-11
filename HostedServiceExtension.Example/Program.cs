@@ -5,27 +5,24 @@ using HostedServiceExtension.Example.Jobs;
 using HostedServiceExtension.Example.Service;
 using HostedServiceExtension.KestrelTcpServer;
 
-var host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =>
-    {
-        // TCP Server
-        services.AddTcpServer(options =>
-        {
-            options.ListenAnyIP<SampleHandler>(18888);
-        });
-        services.AddSingleton<ICommand, ExitCommand>();
-        services.AddSingleton<ICommand, GetCommand>();
-        services.AddSingleton<ICommand, SetCommand>();
+var builder = Host.CreateApplicationBuilder(args);
 
-        // Cron Job
-        services.AddJobScheduler(options =>
-        {
-            options.UseJob<SampleJob>("*/1 * * * *");
-        });
+// TCP Server
+builder.Services.AddTcpServer(options =>
+{
+    options.ListenAnyIP<SampleHandler>(18888);
+});
+builder.Services.AddSingleton<ICommand, ExitCommand>();
+builder.Services.AddSingleton<ICommand, GetCommand>();
+builder.Services.AddSingleton<ICommand, SetCommand>();
 
-        // Service
-        services.AddSingleton<FeatureService>();
-    })
-    .Build();
+// Cron Job
+builder.Services.AddJobScheduler(options =>
+{
+    options.UseJob<SampleJob>("*/1 * * * *");
+});
 
-host.Run();
+// Service
+builder.Services.AddSingleton<FeatureService>();
+
+builder.Build().Run();
