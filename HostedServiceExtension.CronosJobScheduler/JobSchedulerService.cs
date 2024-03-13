@@ -42,7 +42,7 @@ internal sealed class JobSchedulerService : BackgroundService
             try
             {
                 var delay = next.Value - DateTimeOffset.Now;
-                await Task.Delay(delay < TimeSpan.Zero ? TimeSpan.Zero : delay, stoppingToken).ConfigureAwait(false);
+                await Task.Delay(delay < TimeSpan.Zero ? TimeSpan.Zero : delay, stoppingToken).ConfigureAwait(ConfigureAwaitOptions.SuppressThrowing);
 
                 if (!stoppingToken.IsCancellationRequested)
                 {
