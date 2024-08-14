@@ -1,6 +1,5 @@
 namespace HostedServiceExtension.KestrelTcpServer;
 
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,7 +35,7 @@ internal sealed class TcpServerService : IHostedService, IDisposable
     public void Dispose() => kestrelServer.Dispose();
 
     public Task StartAsync(CancellationToken cancellationToken) =>
-        kestrelServer.StartAsync((IHttpApplication<object>)null!, cancellationToken);
+        kestrelServer.StartAsync<object>(null!, cancellationToken);
 
     public async Task StopAsync(CancellationToken cancellationToken)
     {
