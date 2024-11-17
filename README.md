@@ -1,7 +1,7 @@
 # HostedService Extension for .NET
 
-[![NuGet Badge](https://buildstats.info/nuget/HostedServiceExtension.KestrelTcpServer)](https://www.nuget.org/packages/HostedServiceExtension.KestrelTcpServer/)
-[![NuGet Badge](https://buildstats.info/nuget/HostedServiceExtension.CronosJobScheduler)](https://www.nuget.org/packages/HostedServiceExtension.CronosJobScheduler/)
+[![NuGet](https://img.shields.io/nuget/v/HostedServiceExtension.KestrelTcpServer.svg)](https://www.nuget.org/packages/HostedServiceExtension.KestrelTcpServer)
+[![NuGet](https://img.shields.io/nuget/v/HostedServiceExtension.CronosJobScheduler.svg)](https://www.nuget.org/packages/HostedServiceExtension.CronosJobScheduler)
 
 ```csharp
 var builder = Host.CreateApplicationBuilder(args);

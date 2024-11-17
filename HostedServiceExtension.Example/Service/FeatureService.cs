@@ -2,7 +2,7 @@ namespace HostedServiceExtension.Example.Service;
 
 public sealed class FeatureService
 {
-    private readonly object sync = new();
+    private readonly Lock sync = new();
 
     private bool enable;
 
