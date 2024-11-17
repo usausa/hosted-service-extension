@@ -22,7 +22,7 @@ public sealed class TcpServerOptions
 
     public void Listen<T>(IPAddress address, int port)
         where T : ConnectionHandler =>
-        serverOptions.Listen(address, port, config =>
+        serverOptions.Listen(address, port, static config =>
         {
             config.Protocols = HttpProtocols.None;
             config.UseConnectionHandler<T>();
@@ -30,7 +30,7 @@ public sealed class TcpServerOptions
 
     public void Listen<T>(IPEndPoint endPoint)
         where T : ConnectionHandler =>
-        serverOptions.Listen(endPoint, config =>
+        serverOptions.Listen(endPoint, static config =>
         {
             config.Protocols = HttpProtocols.None;
             config.UseConnectionHandler<T>();
@@ -38,7 +38,7 @@ public sealed class TcpServerOptions
 
     public void ListenLocalhost<T>(int port)
         where T : ConnectionHandler =>
-        serverOptions.ListenLocalhost(port, config =>
+        serverOptions.ListenLocalhost(port, static config =>
         {
             config.Protocols = HttpProtocols.None;
             config.UseConnectionHandler<T>();
@@ -46,7 +46,7 @@ public sealed class TcpServerOptions
 
     public void ListenAnyIP<T>(int port)
         where T : ConnectionHandler =>
-        serverOptions.ListenAnyIP(port, config =>
+        serverOptions.ListenAnyIP(port, static config =>
         {
             config.Protocols = HttpProtocols.None;
             config.UseConnectionHandler<T>();

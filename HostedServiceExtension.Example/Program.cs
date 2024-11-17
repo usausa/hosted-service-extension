@@ -17,7 +17,7 @@ builder.Services.AddSingleton<ICommand, GetCommand>();
 builder.Services.AddSingleton<ICommand, SetCommand>();
 
 // Cron Job
-builder.Services.AddJobScheduler(options =>
+builder.Services.AddJobScheduler(static options =>
 {
     options.UseJob<SampleJob>("*/1 * * * *");
 });
