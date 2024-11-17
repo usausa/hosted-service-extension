@@ -8,7 +8,7 @@ using HostedServiceExtension.KestrelTcpServer;
 var builder = Host.CreateApplicationBuilder(args);
 
 // TCP Server
-builder.Services.AddTcpServer(options =>
+builder.Services.AddTcpServer(static options =>
 {
     options.ListenAnyIP<SampleHandler>(18888);
 });
