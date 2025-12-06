@@ -18,6 +18,19 @@ internal sealed class JobSchedulerService : BackgroundService
         jobOptions = options.JobOptions;
     }
 
+    public override void Dispose()
+    {
+        base.Dispose();
+
+        foreach (var jobOption in jobOptions)
+        {
+            if (jobOption.Job is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+        }
+    }
+
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var tasks = new Task[jobOptions.Count];
