@@ -24,6 +24,7 @@ internal sealed class JobSchedulerService : BackgroundService
 
         foreach (var jobOption in jobOptions)
         {
+            // ReSharper disable once SuspiciousTypeConversion.Global
             if (jobOption.Job is IDisposable disposable)
             {
                 disposable.Dispose();
